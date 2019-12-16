@@ -13,9 +13,11 @@
 
         <ul>
             <li th:each="signup : ${signups}">
-                <!-- use dangerous unescaped text -->
+                <!-- using dangerous unescaped text -->
                 <span th:utext="${signup.name}">name</span>
+                <!-- hiding address with css means that it can be seen with developer tools -->
                 <span th:style="${admin} ? 'display:block' : 'display:none'" th:utext="${signup.address}">address</span>
+                <!-- this th:if should be used when hiding elements -->
                 <form th:if="${admin}" th:action="@{/signups/{id}(id=${signup.id})}" th:method="DELETE">
                     <input type="submit" value="Delete"/>
                 </form>

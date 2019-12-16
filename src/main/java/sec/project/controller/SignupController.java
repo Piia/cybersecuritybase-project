@@ -1,6 +1,7 @@
 package sec.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,6 +46,8 @@ public class SignupController {
         return "done";
     }
     
+    // this line requires user to have admin rights
+    // @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/signups/{id}", method = RequestMethod.DELETE)
     public String remove(@PathVariable Long id) {
         signupRepository.delete(id);
