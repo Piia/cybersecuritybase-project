@@ -14,7 +14,7 @@ Run command: `cd cybersecuritybase-project`
 Run command: `mvn package`
 
 ## 4. Start running:
-Run command: `java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App`
+Run command: `java -jar target/cybersecuritybase-project-1.0-SNAPSHOT.jar`
 
 ## 5. Use your browser and navigate to http://localhost:8080 
 
