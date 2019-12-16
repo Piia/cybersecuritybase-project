@@ -7,14 +7,24 @@
 
         <h1>Thank you! You have been signed up to the event!</h1>
         
+        <p th:if="${admin}">You are admin</p>
+        
         <h2>List of signups</h2>
 
         <ul>
             <li th:each="signup : ${signups}">
                 <!-- use dangerous unescaped text -->
                 <span th:utext="${signup.name}">name</span>
+                <span th:style="${admin} ? 'display:block' : 'display:none'" th:utext="${signup.address}">address</span>
+                <form th:if="${admin}" th:action="@{/signups/{id}(id=${signup.id})}" th:method="DELETE">
+                    <input type="submit" value="Delete"/>
+                </form>
             </li>
         </ul>
+        
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout"/>
+        </form>
 
     </body>
 </html>

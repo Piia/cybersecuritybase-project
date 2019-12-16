@@ -22,10 +22,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // disabled CSRF protection
         http.csrf().disable();
-
-        // no real security at the moment
+        
         http.authorizeRequests()
-                .anyRequest().permitAll();
+            // no admin check
+            // .antMatchers("/admin").hasAuthority("ADMIN")
+            .anyRequest().authenticated();
+
+        http.formLogin().permitAll();
     }
 
     @Autowired
